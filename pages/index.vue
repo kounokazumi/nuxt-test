@@ -19,7 +19,7 @@
             <a href="#" id="fg_ps">パスワードをお忘れの方はこちら</a>
             <div class="new_acounts">
               <p>アカウントをお持ちではありませんか？</p>
-              <a href="#" id="new_users">新規会員登録</a>
+              <router-link to="new_acount">新規会員登録</router-link>
             </div>
          </form> 
          
