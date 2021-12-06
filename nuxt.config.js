@@ -1,3 +1,4 @@
+
 module.exports = {
   /*
   ** Headers of the page
@@ -34,6 +35,10 @@ module.exports = {
         })
       }
     }
-  }
+  },
+  // グローバルCSS設定
+  css: [
+    {src:'~/assets/main.scss',lang:'scss'},
+  ],
 }
 

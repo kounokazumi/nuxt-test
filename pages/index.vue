@@ -1,7 +1,7 @@
 
 <template>
   <section class="container">
-      <div>
+      <div class="login-card">
         <h1>ログイン</h1>
         <form>
           <input type="text" id="mail" name="mail" placeholder="メールアドレス" >
