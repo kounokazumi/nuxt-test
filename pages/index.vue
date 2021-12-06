@@ -1,3 +1,6 @@
+<style lang="scss">
+ @import "assets/module.scss";
+</style>
 
 <template>
   <section class="container">
@@ -5,30 +8,30 @@
         <h1>ログイン</h1>
         <form>
           <input type="text" id="mail" name="mail" placeholder="メールアドレス" >
-          <input v-bind:type="passType" name="pass" placeholder="パスワード" >
+          <input v-bind:type="passType" id="pass" name="pass" placeholder="パスワード" >
+          <label class="checkbox-inline" >
+            マスク解除
+            <input type="checkbox" v-model="passHidden" v-bind:value="false"/>
+          </label> 
           
-          <div class="help-block">
-            <label class="checkbox-inline" >
-              マスク解除
-              <input type="checkbox" v-model="passHidden" v-bind:value="false"/>
-            </label> 
-          </div>
-          
-          <input type="submit" value="ログイン" formmethod="POST" >
-        </form> 
-
-        <a href="#" >パスワードをお忘れの方はこちら</a>
-        <p>アカウントをお持ちではありませんか？</p>
-        <a href="#" id="new_users">新規会員登録</a>
+          <input type="submit" id="login" value="ログイン" formmethod="POST" >
+       
+            <a href="#" id="fg_ps">パスワードをお忘れの方はこちら</a>
+            <div class="new_acounts">
+              <p>アカウントをお持ちではありませんか？</p>
+              <a href="#" id="new_users">新規会員登録</a>
+            </div>
+         </form> 
+         
 
       </div>
   </section>
 </template>
 
-<script>
+<script> 
 
 export default {
-  // 変数
+  // 変数（パスワードマスク）
   data(){
     return{
       passHidden:true,
@@ -47,7 +50,9 @@ export default {
     passHidden(){
     }
   },
-  // 関数
+
+
+  // カウンタ関数
   methods: {
     addCount (e) {
       this.$store.commit('counter/add')

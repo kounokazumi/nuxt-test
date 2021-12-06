@@ -39,6 +39,7 @@ module.exports = {
   // グローバルCSS設定
   css: [
     {src:'~/assets/main.scss',lang:'scss'},
+    
   ],
 }
 

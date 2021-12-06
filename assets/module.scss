@@ -1,0 +1,53 @@
+// ログイン用カード
+.login-card {
+  width: 80%;
+  margin: auto;
+  padding: 10% 10%;
+  form {
+    width: 80%;
+    margin: 10% auto 0 auto;
+  }
+  h1 {
+    text-align: center;
+  }
+
+  // 入力部分
+  width: 80%;
+  margin: 0 auto;
+  #mail,
+  #pass,
+  #login {
+    width: 100%;
+    line-height: 2em;
+  }
+  #mail {
+    margin-bottom: 5%;
+  }
+  .checkbox-inline {
+    display: block;
+  }
+  #login {
+    margin-top: 2%;
+    padding: 1%;
+    border: none;
+    border-radius: 10px;
+  }
+  // パスワードをお忘れの方
+  #fg_ps {
+    margin: 3% 0 5% 0;
+    display: block;
+    text-align: center;
+    // color: aquamarine;
+    text-decoration: none;
+  }
+  // アカウント作成
+  .new_acounts {
+    text-align: center;
+    p {
+      display: inline-block;
+    }
+    a {
+      text-decoration: none;
+    }
+  }
+}
