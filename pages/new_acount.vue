@@ -20,7 +20,7 @@
           
           <!-- まだできない -->
           <a>
-            <router-link to="" id="cancel">キャンセル</router-link>
+            <router-link to="top" id="cancel">キャンセル</router-link>
           </a>
          </form> 
          
