@@ -41,5 +41,9 @@ module.exports = {
     {src:'~/assets/main.scss',lang:'scss'},
     
   ],
+  plugins: [
+    { src: '~/plugins/firebase.js', mode: 'client' }
+  ]
+  
 }
 

@@ -19,13 +19,19 @@
             <a href="#" id="fg_ps">パスワードをお忘れの方はこちら</a>
             <div class="new_acounts">
               <p>アカウントをお持ちではありませんか？</p>
-              <router-link to="new_acount">新規会員登録</router-link>
+              <a href="http://localhost:3000/new_acount">新規会員登録</a>
             </div>
          </form> 
          
+         <!--ログインテスト用要リンク　終わったら消して  -->
+        <a href="http://localhost:3000/google_test">ログインテストへ</a>
+
+        <a href="http://localhost:3000/lists">リストへ</a>
 
       </div>
+
   </section>
 </template>
+
 <script src="assets/module.js">
 </script>

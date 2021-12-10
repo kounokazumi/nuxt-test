@@ -1,5 +1,9 @@
 
 export default {
+ 
+    watchQuery: ['page'],
+  
+
     // 変数（パスワードマスク）
     data(){
       return{
