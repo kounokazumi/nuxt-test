@@ -38,7 +38,7 @@ module.exports = {
   },
   // グローバルCSS設定
   css: [
-    {src:'~/assets/main.scss',lang:'scss'},
+    {src:'~/layouts/main.scss',lang:'scss'},
     
   ],
   plugins: [

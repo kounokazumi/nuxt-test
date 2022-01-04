@@ -3,7 +3,7 @@
 </style>
 
 <template>
-<section class="container">
+<section>
       <div class="new-acount_card">
         <p>新規会員登録</p>
         <form>

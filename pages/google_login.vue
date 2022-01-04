@@ -11,13 +11,6 @@
 <script>
 import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
 export default {
-//   // data () {
-//   //   return {
-//   //     emailAddress: 'piokn0526irumili@gmail.com',
-//   //     password: 'g5t48-1nu',
-//   //   }
-//   },
-  // 関数？
   methods: {
     SignInGoogle () {
       const provider = new GoogleAuthProvider()
