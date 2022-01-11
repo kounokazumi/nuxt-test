@@ -1,28 +1,7 @@
 
 export default {
  
-    watchQuery: ['page'],
-  
 
-    // 変数（パスワードマスク）
-    data(){
-      return{
-        passHidden:true,
-      }
-    },
-    // 呼び出し先の値が変われば、キャッシュしてくれる。
-    // 動的に変わる変数などで使う。
-    computed: {
-      count () { return this.$store.state.counter.count },
-      passType(){
-        return this.passHidden ? 'password' : 'text';
-      }
-    },
-    // 値が変わったときに処理を実行する
-    watch:{
-      passHidden(){
-      }
-    },
 
 
 
@@ -37,6 +16,12 @@ export default {
     clearCount (e) {
       this.$store.commit('counter/clear')
     },
+
+    reset: function () {
+      // リセット時は`$data`にアサイン
+      Object.assign(this.$data, this.data());
+    },
+
   },
   // 表示後
   mounted(){

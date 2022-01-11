@@ -1,56 +1,22 @@
-// ログイン用カード
-.login-card {
-  width: 80%;
+// トップ画面
+.top {
+  width: 70%;
   margin: auto;
-  padding: 10% 10%;
-  form {
-    width: 80%;
-    margin: 10% auto 0 auto;
-  }
-  h1 {
-    text-align: center;
-  }
+  padding: 20% 10% 5%;
 
-  // 入力部分
-  width: 80%;
-  margin: 0 auto;
-  #mail,
-  #pass,
-  #login {
-    width: 100%;
-    line-height: 2em;
-  }
-  #mail {
-    margin-bottom: 5%;
-  }
-  .checkbox-inline {
-    display: block;
-  }
-  #login {
-    margin-top: 2%;
-    padding: 1%;
-    border: none;
-    border-radius: 10px;
-  }
-  // パスワードをお忘れの方
-  #fg_ps {
-    margin: 3% 0 5% 0;
-    display: block;
+  .buttons {
+    padding: 10px;
+    margin-top: 20px;
+    border-radius: 5px;
     text-align: center;
-    // color: aquamarine;
-    text-decoration: none;
-  }
-  // アカウント作成
-  .new_acounts {
-    text-align: center;
-    p {
-      display: inline-block;
-    }
+    background-color: #ff6a06;
     a {
       text-decoration: none;
+      color: white;
     }
   }
 }
+// 新規アカウント画面
 .new-acount_card {
   width: 60%;
   margin: 5% auto;
@@ -68,22 +34,23 @@
       margin: 0%;
     }
     #passmk {
-      width: 10%;
+      width: 2%;
     }
     label {
       display: block;
     }
     #regist {
-      display: inline-block;
-      margin-top: 2%;
-      padding: 1%;
       width: 20%;
+      padding: 10px;
+      margin-top: 2%;
+      border-radius: 5px;
+      background-color: #fed840;
+      color: white;
       border: none;
-      border-radius: 10px;
     }
     #cancel {
       width: 20%;
-      padding: 1% 6%;
+      padding: 13px 6%;
       border: black 1px solid;
       border-radius: 10px;
       text-decoration: none;
@@ -98,5 +65,59 @@
     text-align: center;
     line-height: 2em;
     font-size: 30px;
+  }
+  form {
+    margin-top: 5%;
+    input {
+      width: 100%;
+      line-height: 2.5em;
+      margin-bottom: 4%;
+    }
+    .checkbox-inline {
+      display: block;
+    }
+    #pass {
+      margin: 0%;
+    }
+    #passmk {
+      margin-top: 0;
+      width: 2%;
+    }
+    #regist {
+      padding: 1% 0 1% 0;
+      background-color: #ff6a06;
+      border: none;
+      border-radius: 10px;
+    }
+  }
+  #ps_reset {
+    display: block;
+    width: 28%;
+    margin: 0 auto;
+  }
+  p {
+    margin: 2% 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  p:before,
+  p:after {
+    content: "";
+    border-top: 1px solid black;
+    width: 40%;
+  }
+  p:before {
+    margin-right: 1em; /* 文字の右隣 */
+  }
+  p:after {
+    margin-left: 1em; /* 文字の左隣 */
+  }
+  .google_button {
+    padding: 10px 25px;
+    border-radius: 5px;
+    margin: 0 auto;
+    background-color: #088ef6;
+    color: white;
   }
 }

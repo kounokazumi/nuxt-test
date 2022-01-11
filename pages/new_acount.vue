@@ -28,5 +28,30 @@
       </div>
   </section>
 </template>
-<script src="assets/module.js">
+<script>
+import { defineComponent } from '@vue/composition-api'
+
+export default defineComponent({
+
+        watchQuery: ['page'],
+    // 変数（パスワードマスク）
+    data(){
+      return{
+        passHidden:true,
+      }
+    },
+    // 呼び出し先の値が変われば、キャッシュしてくれる。
+    // 動的に変わる変数などで使う。
+    computed: {
+      count () { return this.$store.state.counter.count },
+      passType(){
+        return this.passHidden ? 'password' : 'text';
+      }
+    },
+    // 値が変わったときに処理を実行する
+    watch:{
+      passHidden(){
+      }
+  },
+})
 </script>

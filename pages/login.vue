@@ -1,34 +1,76 @@
+
 <style lang="scss">
  @import "layouts/module.scss";
 </style>
 
 <template>
-  <section class="container">
-      <div class="login-card">
-        <h1>ログイン</h1>
-        <form>
-          <input type="text" id="mail" name="mail" placeholder="メールアドレス" >
-          <input v-bind:type="passType" id="pass" name="pass" placeholder="パスワード" >
-          <label class="checkbox-inline" >
+<section class="top-card">
+    <h1>ログイン</h1>
+
+    <form>
+        <input type="text" id="name" name="name" placeholder="名前" >
+        <input type="text" id="mail" name="mail" placeholder="メールアドレス" >
+        <input v-bind:type="passType" id="pass" name="pass" placeholder="パスワード" >
+        <label class="checkbox-inline" >
             マスク解除
-            <input type="checkbox" v-model="passHidden" v-bind:value="false"/>
-          </label> 
-          
-          <input type="submit" id="login" value="ログイン" formmethod="POST" >
-       
-            <a href="#" id="fg_ps">パスワードをお忘れの方はこちら</a>
-            <div class="new_acounts">
-              <p>アカウントをお持ちではありませんか？</p>
-              <a href="http://localhost:3000/new_acount">新規会員登録</a>
-            </div>
-         </form> 
-         
-         <!--ログインテスト用要リンク　終わったら消して  -->
-        <a href="http://localhost:3000/google_login">ログインテストへ</a>
+            <input type="checkbox" id="passmk" v-model="passHidden" v-bind:value="false"/>
+        </label> 
+        <input type="submit" id="regist" value="ログイン" formmethod="POST" >
+    </form>
+    <a href="#ps_reset" id="ps_reset">パスワードをお忘れの方はこちら</a>
+    <p>  または </p>
+    <div class="google_button">
+      <v-btn
+      v-on:click="SignInGoogle"
+    >
+      Googleアカウントでログイン
+    </v-btn>
+  </div>
 
-        <a href="http://localhost:3000/lists">リストへ</a>
 
-      </div>
-
-  </section>
+</section>
 </template>
+
+<script>
+import { defineComponent } from '@vue/composition-api'
+import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
+export default {
+     watchQuery: ['page'],
+    // 変数（パスワードマスク）
+    data(){
+      return{
+        passHidden:true,
+      }
+    },
+    // 呼び出し先の値が変われば、キャッシュしてくれる。
+    // 動的に変わる変数などで使う。
+    computed: {
+      count () { return this.$store.state.counter.count },
+      passType(){
+        return this.passHidden ? 'password' : 'text';
+      }
+    },
+    // 値が変わったときに処理を実行する
+    watch:{
+      passHidden(){
+      }
+    },
+
+  methods: {
+    SignInGoogle () {
+      const provider = new GoogleAuthProvider()
+
+    // 認証済みかどうか判定　戻り値：ture or false
+      const auth = getAuth()
+
+      // ログインポップを開く
+      signInWithPopup(auth, provider)
+        .then((result) => {
+          this.$router.push({ path: '/lists' })
+        }).catch((error) => {
+          console.error(error)
+        })
+    }
+  }
+}
+</script>
