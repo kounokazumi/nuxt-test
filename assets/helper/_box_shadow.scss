@@ -1,0 +1,10 @@
+.box_shadow_square {
+  box-shadow: 5px 5px 29px #ededed, -5px -5px 29px #ffffff;
+}
+.box_shadow_circle {
+  box-shadow: 5px 5px 29px #ededed, -5px -5px 29px #ffffff;
+}
+
+@include mediaModifire(box_shadow_square) {
+  box-shadow: 5px 5px 29px #ededed, -5px -5px 29px #ffffff;
+}

@@ -1,0 +1,105 @@
+body {
+  font-weight: 400;
+  font-style: normal;
+  font-size: 15px;
+  line-height: 1.5;
+  font-family: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'BIZ UDPGothic', Meiryo, sans-serif;
+  width: 100%;
+  color: $col_black_dark;
+  word-break: break-word;
+}
+
+h1,
+h2{
+  letter-spacing: 0.2em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+strong {
+  display: block;
+  font-size: inherit;
+  margin: 0;
+  font-weight: 400;
+}
+
+ul {
+  list-style-type: none;
+  li {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+dl {
+  dt {
+    font-weight: 400;
+  }
+  dd {
+    text-align: justify;
+    margin-bottom: 0;
+  }
+}
+
+img {
+  font-family: 'object-fit: cover; object-position: center;';
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  object-position: center;
+}
+
+input,
+button,
+select,
+textarea {
+  color: inherit;
+  background-color: transparent;
+  &:focus {
+    outline: 0;
+  }
+}
+input[type='date'] {
+  min-height: 34px;
+}
+label {
+  margin: 0;
+}
+
+button {
+  display: inline-block;
+  color: $col_black;
+  border-radius: 5px;
+  background-color: $col_white;
+  appearance: none;
+}
+
+select {
+  cursor: pointer;
+  appearance: none;
+  color: inherit;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  background-color: transparent;
+  transition: 0.3s;
+  &:hover {
+    opacity: 0.6;
+  }
+}
+svg {
+  transition: 0.3s;
+  width: 20px;
+  height: 20px;
+}
+header {
+  text-align: center;
+}
+input::placeholder{
+  color:$col_gray;
+}

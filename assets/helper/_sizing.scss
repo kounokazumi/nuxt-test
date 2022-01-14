@@ -1,0 +1,19 @@
+.w_100 {
+  width: 100%;
+}
+.vw_100 {
+  width: 100vw;
+}
+
+.w_100 {
+  width: 100%;
+}
+.vw_80 {
+  width: 80vw;
+}
+
+@include mq(md) {
+  .w_100_pc {
+    width: 100%;
+  }
+}
