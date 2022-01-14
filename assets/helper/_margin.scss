@@ -1,0 +1,205 @@
+$spaceClass: true !default;
+
+$marginTop: true !default;
+$marginRight: true !default;
+$marginBottom: true !default;
+$marginLeft: true !default;
+$marginX: true !default;
+$marginY: true !default;
+$marginXY: false !default;
+
+$spacePadding: true !default;
+$paddingTop: true !default;
+$paddingRight: true !default;
+$paddingBottom: true !default;
+$paddingLeft: true !default;
+$paddingX: true !default;
+$paddingY: true !default;
+$paddingXY: true !default;
+
+$endValue: 20 !default;
+
+@if $spaceClass {
+  .mx_auto{
+    margin-left: auto;
+    margin-right: auto;
+  }
+  @for $i from 0 through $endValue {
+    @if $marginTop {
+      .mt_#{$i*5} {
+        margin-top: 5px * $i;
+      }
+    }
+    @if $marginRight {
+      .mr_#{$i*5} {
+        margin-right: 5px * $i;
+      }
+    }
+    @if $marginBottom {
+      .mb_#{$i*5} {
+        margin-bottom: 5px * $i;
+      }
+    }
+    @if $marginLeft {
+      .ml_#{$i*5} {
+        margin-left: 5px * $i;
+      }
+    }
+    @if $marginX {
+      .mx_#{$i*5} {
+        margin-right: 5px * $i;
+        margin-left: 5px * $i;
+      }
+    }
+    @if $marginY {
+      .my_#{$i*5} {
+        margin-top: 5px * $i;
+        margin-bottom: 5px * $i;
+      }
+    }
+    @if $marginXY {
+      .mxy_#{$i*5} {
+        margin-top: 5px * $i;
+        margin-right: 5px * $i;
+        margin-bottom: 5px * $i;
+        margin-left: 5px * $i;
+      }
+    }
+
+    @if $spacePadding {
+      @if $paddingTop {
+        .pt_#{$i*5} {
+          padding-top: 5px * $i;
+        }
+      }
+      @if $paddingRight {
+        .pr_#{$i*5} {
+          padding-right: 5px * $i;
+        }
+      }
+      @if $paddingBottom {
+        .pb_#{$i*5} {
+          padding-bottom: 5px * $i;
+        }
+      }
+      @if $paddingLeft {
+        .pl_#{$i*5} {
+          padding-left: 5px * $i;
+        }
+      }
+      @if $paddingX {
+        .px_#{$i*5} {
+          padding-right: 5px * $i;
+          padding-left: 5px * $i;
+        }
+      }
+      @if $paddingY {
+        .py_#{$i*5} {
+          padding-top: 5px * $i;
+          padding-bottom: 5px * $i;
+        }
+      }
+      @if $paddingXY {
+        .pxy_#{$i*5} {
+          padding-top: 5px * $i;
+          padding-right: 5px * $i;
+          padding-bottom: 5px * $i;
+          padding-left: 5px * $i;
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .px_5_per {
+      padding-right: $page_padding_sp;
+      padding-left: $page_padding_sp;
+    }
+  }
+
+  @for $i from 0 through $endValue {
+    @if $marginTop {
+      @include mediaModifire(mt_#{$i * 5}) {
+        margin-top: 5px * $i;
+      }
+    }
+    @if $marginRight {
+      @include mediaModifire(mr_#{$i * 5}) {
+        margin-right: 5px * $i;
+      }
+    }
+    @if $marginBottom {
+      @include mediaModifire(mb_#{$i * 5}) {
+        margin-bottom: 5px * $i;
+      }
+    }
+    @if $marginLeft {
+      @include mediaModifire(ml_#{$i * 5}) {
+        margin-left: 5px * $i;
+      }
+    }
+    @if $marginX {
+      @include mediaModifire(mx_#{$i * 5}) {
+        margin-right: 5px * $i;
+        margin-left: 5px * $i;
+      }
+    }
+    @if $marginY {
+      @include mediaModifire(my_#{$i * 5}) {
+        margin-top: 5px * $i;
+        margin-bottom: 5px * $i;
+      }
+    }
+    @if $marginXY {
+      @include mediaModifire(mxy_#{$i * 5}) {
+        margin-top: 5px * $i;
+        margin-right: 5px * $i;
+        margin-bottom: 5px * $i;
+        margin-left: 5px * $i;
+      }
+    }
+
+    @if $spacePadding {
+      @if $paddingTop {
+        @include mediaModifire(pt_#{$i * 5}) {
+          padding-top: 5px * $i;
+        }
+      }
+      @if $paddingRight {
+        @include mediaModifire(pr_#{$i * 5}) {
+          padding-right: 5px * $i;
+        }
+      }
+      @if $paddingBottom {
+        @include mediaModifire(pb_#{$i * 5}) {
+          padding-bottom: 5px * $i;
+        }
+      }
+      @if $paddingLeft {
+        @include mediaModifire(pl_#{$i * 5}) {
+          padding-left: 5px * $i;
+        }
+      }
+      @if $paddingX {
+        @include mediaModifire(px_#{$i * 5}) {
+          padding-right: 5px * $i;
+          padding-left: 5px * $i;
+        }
+      }
+      @if $paddingY {
+        @include mediaModifire(py_#{$i * 5}) {
+          padding-top: 5px * $i;
+          padding-bottom: 5px * $i;
+        }
+      }
+      @if $paddingXY {
+        @include mediaModifire(pxy_#{$i * 5}) {
+          padding-top: 5px * $i;
+          padding-right: 5px * $i;
+          padding-bottom: 5px * $i;
+          padding-left: 5px * $i;
+        }
+      }
+    }
+  }
+}

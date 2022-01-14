@@ -1,0 +1,57 @@
+@each $modifier, $size in $font_sizes {
+  .fs_#{$modifier} {
+    font-size: $size;
+  }
+}
+
+@include mq(md) {
+  @each $modifier, $size in $font_sizes {
+    .fs_#{$modifier}_pc {
+      font-size: $size;
+    }
+  }
+}
+
+// 文字間
+.lt_1{
+  letter-spacing: 0.1em;
+}
+.lt_2{
+  letter-spacing: 0.2em;
+}
+@include mediaModifire(lt_1) {
+  letter-spacing: 0.1em;
+}
+@include mediaModifire(lt_2) {
+  letter-spacing: 0.2em;
+}
+
+.wb_all{
+  word-break: break-all;
+}
+
+@each $modifier, $size in $font_sizes {
+  @include mediaModifire(fs_#{$modifier}) {
+    font-size: $size;
+  }
+}
+.fw_l {
+  font-weight: lighter;
+}
+.fw_n {
+  font-weight: normal;
+}
+.fw_b {
+  font-weight: bold;
+}
+@include mq(md) {
+  .fw_l_pc {
+    font-weight: lighter;
+  }
+  .fw_n_pc {
+    font-weight: normal;
+  }
+  .fw_b_pc {
+    font-weight: bold;
+  }
+}

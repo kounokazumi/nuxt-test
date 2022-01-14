@@ -1,0 +1,162 @@
+/*
+* variable.scss
+*/
+
+/* -- font-size -- */
+// TODO extendする
+$fs_1: 11px !default;
+$fs_2: 13px !default;
+$fs_3: 15px !default;
+$fs_4: 16px !default;
+$fs_5: 20px !default;
+$fs_6: 22px !default;
+$fs_7: 28px !default;
+
+$i: 10;
+$font_sizes: ();
+@while $i <= 36 {
+  $font_size: (
+    $i: $i + px,
+  );
+  $font_sizes: map-merge($font_sizes, $font_size);
+  $i: $i + 1;
+}
+
+/* -- font-family -- */
+$main_font: "" !default;
+// <head>内に<link href="https://fonts.googleapis.com/〜" rel="stylesheet">（使用するフォントライブラリ）追加
+
+/* -- color -- */
+$col_black: #777 !default;
+$col_black_dark: #404040 !default;
+$col_gray: #aaa !default;
+$col_gray_sub: #f8f8f8 !default;
+$col_gray_sub2: #f5f5f5 !default;
+$col_gray_sub3: #eee !default;
+$col_gray_sub4: #e9e9e9 !default;
+$col_gray_sub5: #f2ebe7 !default;
+$col_gray_sub6: #797979 !default;
+$col_gray_light: #bababa !default;
+$col_gray_light_sub: #7b7b7b !default;
+$col_gray_dark: #eb5d75 !default;
+$col_gray_light_sub2: #a3a3a3 !default;
+$col_gray_sub_m: #808080 !default;
+$col_white: #fff !default;
+$col_yellow: #f5c353 !default;
+$col_yellow_sub: #f9f1e1 !default;
+$col_gold: #cea64f !default;
+$col_gold_sub: #f5eddc !default;
+$col_red: #ea4343 !default;
+$col_blue: #548ec9 !default;
+$col_blue_sub: #dde8f4 !default;
+$col_theme: #fd4f73 !default;
+$col_theme_2: #e86d72 !default;
+$col_theme_gray: #e0d2d2 !default;
+$col_theme_light: #fbf7f5 !default;
+$col_theme_light_2: #f8f5ef !default;
+$col_theme_sub_m: #f18d9e !default;
+$col_theme_sub: #ffedf1 !default;
+$col_theme_2_sub: #fbdfe3 !default;
+$col_accent: #00b09c !default;
+$col_accent_sub_m: #78c49c !default;
+$col_accent_sub: #d9efeb !default;
+$col_accent_sub2: #f2ebe7 !default;
+
+$site_colors: (
+  "black": $col_black,
+  "black_dark": $col_black_dark,
+  "gray": $col_gray,
+  "gray_dark": $col_gray_dark,
+  "gray_light": $col_gray_light,
+  "gray_light_sub": $col_gray_light_sub,
+  "gray_light_sub2": $col_gray_light_sub2,
+  "gray_sub": $col_gray_sub,
+  "gray_sub2": $col_gray_sub2,
+  "gray_sub3": $col_gray_sub3,
+  "gray_sub4": $col_gray_sub4,
+  "gray_sub5": $col_gray_sub5,
+  "gray_sub_m": $col_gray_sub_m,
+  "white": $col_white,
+  "yellow": $col_yellow,
+  "yellow_sub": $col_yellow_sub,
+  "gold": $col_gold,
+  "gold_sub": $col_gold_sub,
+  "red": $col_red,
+  "blue": $col_blue,
+  "blue_sub": $col_blue_sub,
+  "theme": $col_theme,
+  "theme_2": $col_theme_2,
+  "theme_gray": $col_theme_gray,
+  "theme_light": $col_theme_light,
+  "theme_light_2": $col_theme_light_2,
+  "theme_sub_m": $col_theme_sub_m,
+  "theme_sub": $col_theme_sub,
+  "theme_2_sub": $col_theme_2_sub,
+  "accent": $col_accent,
+  "accent_sub_m": $col_accent_sub_m,
+  "accent_sub": $col_accent_sub,
+  "accent_sub2": $col_accent_sub2,
+) !default;
+
+/* -- size --*/
+$page_width: 1200px !default;
+$page_max_width: 1366px !default;
+$page_padding: 30px !default;
+$page_padding_sp: 5% !default;
+
+$column2_main_width: 830px !default;
+$column2_side_width: 260px !default;
+
+/* -- grid_size -- */
+$grid-sizes: (
+  1: 100px,
+  2: 150px,
+  3: 200px,
+  4: 250px,
+  5: 300px,
+) !default;
+
+/* -- layer(z-index) -- */
+$layer: (
+  modal: 100,
+  header: 20,
+  sidebar: 11,
+  tooltip: 10,
+  float: 5,
+  cover: 1,
+  default: 1,
+) !default;
+
+/* -- media_query -- */
+$breakpoints: (
+  "sm": "screen and (min-width: 400px)",
+  "md": "screen and (min-width: 768px)",
+  "lg": "screen and (min-width: 1000px)",
+  "xl": "screen and (min-width: 1200px)",
+) !default;
+@mixin mq($breakpoint: md) {
+  @media #{map-get($breakpoints, $breakpoint)} {
+    @content;
+  }
+}
+
+/* -- media modifier -- */
+@mixin mediaModifire($className) {
+  @include mq(md) {
+    .#{$className}_pc {
+      @content;
+    }
+  }
+}
+
+$imagePath: "/img/";
+
+$cloudImagePath: "https://libraly.brapla.com/";
+
+@function getUrl($url, $size: false, $dir: "web-app/") {
+  @if ($size == false) {
+    @return url($cloudImagePath + $dir + $url);
+  }
+
+  @return url($cloudImagePath + "resized-" + $size + "-" + $dir + $url);
+}
