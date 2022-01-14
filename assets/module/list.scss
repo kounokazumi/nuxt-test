@@ -1,0 +1,19 @@
+.list2 ul {
+    ul{
+        padding: 0.3em 0.5em;
+        position: relative;
+        color: #000000;
+        list-style-type: none;
+        font-weight:700;
+        color: #424242;
+        li{
+            line-height: 2.0;
+            padding: 0.5em 0 0.5em 1.4em;
+            border-bottom: dashed 1px #8a8a8a;
+            width: 500px;
+        }
+    }
+    ol{
+        counter-reset: number;
+    }
+}
