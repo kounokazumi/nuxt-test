@@ -1,34 +1,40 @@
 <template>
-<body>
-<div id="tab">
-  <ul class="tabMenu">
-    <li class="button1" v-on:click="isSelect('1')">買い物リスト</li>
-    <li class="button1" v-on:click="isSelect('2')">在庫リスト</li>
-  </ul>
-</div>
+  <div>
+    <div id="tab">
+      <ul class="tabMenu">
+        <li class="button1" v-on:click="isSelect('1')">買い物リスト</li>
+        <li class="button1" v-on:click="isSelect('2')">在庫リスト</li>
+      </ul>
+    </div>
 
-<div class="box">
-  <div class="list2">
-    <ul>
-      <li>
-        <input class="check" type="checkbox"  name="scales" checked>リスト
-        <button class="flatbutton" ><span id="buttonImage"></span></button>
-      </li>
-      <li>
-        <input class="check" type="checkbox"  name="scales" checked>リスト
-        <button class="flatbutton">
-          <span id="buttonImage"></span>
-        </button>
-      </li>
-    </ul>
+
+    <input class="form" type="text" name="number" placeholder="リスト名">
+    <button class="save" type="submit">追加</button>
+
+    <div class="box">
+      <div class="list2">
+        <ul>
+          <li>
+            <input class="check" type="checkbox"  name="scales" checked>リスト
+            <button class="flatbutton" >
+              <i class="fas fa-trash"></i>
+            </button>
+          </li>
+          <li>
+            <input class="check" type="checkbox"  name="scales" checked>リスト
+            <button class="flatbutton">
+              <i class="fas fa-trash"></i>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
-</div>
-</body>
+
 </template>
 
 <script>
     export default{
-    el: "#tab",
     data(){
       return{
         isActive: "1"
@@ -45,21 +51,19 @@
 
 <style>
 body{
-    position: static;
+    position: sticky;
     background-color: #F7F1BB;
 }
 .tabMenu{
   position: relative;
+  left: 15%;
+  top: 40px;
 
 }
 .button1 {
   display: inline-block;
   font-size: 10px;
   color: #000000;
-}
-
-body {
-  padding: 10px 5%;
 }
 .example {
   height: 2px;
@@ -80,35 +84,16 @@ body {
 
 .box{
     position: relative;
-    top: 100px;
+    top: 0px;
     left: 245px;
     padding: 0.5em 1em;
     margin: 2em 0;
-    width: 40%;
-    height: 40em;
+    width: 35%;
+    height: 30em;
     color: width;
     background-color: #ffffff;
     border-top: solid 5px #ffbe00;
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
-}
-
-
-.list2 ul {
-  padding: 0.3em 0.5em;
-  position: relative;
-  color: #000000;
-  list-style-type: none;
-  font-weight:700;
-  color: #424242;
-}
-.list2 ol {
-  counter-reset: number;
-}
-.list2 ul li{
-  line-height: 2.0;
-  padding: 0.5em 0 0.5em 1.4em;
-  border-bottom: dashed 1px #8a8a8a;
-  width: 500px;
 }
 
 .check{
@@ -130,6 +115,31 @@ body {
   background-color:#ffffff;
   width:60px;
   height:40px;
-  right:45%;
+  right:10%;
+}
+
+.form{
+    position: relative;
+    top: 200px;
+    left: 55%;
+    height: 45px;
+    width: 300px;
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    background: #ffffff;
+    border: solid 1px #aaaaaa;
+    border-radius: 10px;
+    }
+
+    .save{
+    position: relative;
+    top: 270px;
+    left: 35%;
+    font-size: 15px;
+    color: #ffffff;
+    height: 40px;
+    width: 300px;
+    background-color: #f1d091;
+    border: solid 0px;
 }
 </style>
