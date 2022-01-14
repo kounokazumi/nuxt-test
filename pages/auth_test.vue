@@ -25,23 +25,24 @@ const firebaseConfig = {
   appId: "1:349598854436:web:1d1b5f82200975efd797b1",
   measurementId: "G-0J6YB1EVW9"
 };
-
 export default {
-  data(){
+  data:()=>{
    return {
-     email:"",
-     password: ""
+     email:'',
+     password: ''
    }
   },
   methods:{
     login(){
+     
       const auth = getAuth();
       createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-       var user = userCredential.user;
+       const user = userCredential.user;
         console.log('成功');
       }).cach((error)=>{
-        alret(error)
+         const errorCode = error.code;
+          const errorMessage = error.message;
       });
     },
   }

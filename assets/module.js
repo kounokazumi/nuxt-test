@@ -1,9 +1,5 @@
 
 export default {
- 
-
-
-
 
       // カウンタ関数
   methods: {
