@@ -1,3 +1,4 @@
+
 module.exports = {
   /*
   ** Headers of the page
@@ -34,6 +35,14 @@ module.exports = {
         })
       }
     }
-  }
+  },
+  // グローバルCSS設定
+  css: [
+    {src:'~/layouts/main.scss',lang:'scss'},
+  ],
+  plugins: [
+    { src: '~/plugins/firebase.js', mode: 'client' }
+  ]
+  
 }
 
