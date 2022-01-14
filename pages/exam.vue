@@ -1,18 +1,10 @@
 <template>
-  <div>
-    <div id="tab">
-      <ul class="tabMenu">
-        <li class="button1" v-on:click="isSelect('1')">買い物リスト</li>
-        <li class="button1" v-on:click="isSelect('2')">在庫リスト</li>
-      </ul>
-    </div>
+  <div class="bl_exam">
+    <!-- ナビバー -->
+    <Navbar/>
 
-
-    <input class="form" type="text" name="number" placeholder="リスト名">
-    <button class="save" type="submit">追加</button>
-
-    <div class="box">
-      <div class="list2">
+    <div class="bl_exam_main">
+      <div class="bl_box">
         <ul>
           <li>
             <input class="check" type="checkbox"  name="scales" checked>リスト
@@ -28,13 +20,26 @@
           </li>
         </ul>
       </div>
+
+      <form class="bl_box" action="">
+        <input class="form" type="text" name="number" placeholder="リスト名">
+        <button class="save" type="submit">追加</button>
+      </form>
+
     </div>
+    
+
   </div>
 
 </template>
 
 <script>
-    export default{
+  export default{
+    // コンポーネント呼び出し
+    components: {
+      Navbar: () => import('~/layouts/navbar')
+    },
+
     data(){
       return{
         isActive: "1"
@@ -50,21 +55,11 @@
 </script>
 
 <style>
-body{
+/* body{
     position: sticky;
     background-color: #F7F1BB;
 }
-.tabMenu{
-  position: relative;
-  left: 15%;
-  top: 40px;
 
-}
-.button1 {
-  display: inline-block;
-  font-size: 10px;
-  color: #000000;
-}
 .example {
   height: 2px;
   position: relative;
@@ -141,5 +136,5 @@ body{
     width: 300px;
     background-color: #f1d091;
     border: solid 0px;
-}
+} */
 </style>

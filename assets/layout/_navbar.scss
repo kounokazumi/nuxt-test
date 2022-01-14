@@ -1,0 +1,13 @@
+.ly_navbar{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    &_tabList{
+        display: grid;
+        gap: 10px;
+        grid-template-columns: 1fr 1fr;
+        &_item{
+            border-bottom: 1px solid $col_gray;
+        }
+    }
+}
