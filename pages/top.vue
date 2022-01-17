@@ -1,14 +1,10 @@
 <style lang="scss">
- @import "layouts/module.scss";
+ @import "assets/app.scss";
 </style>
 
 <template>
-  <section class="top">
-      <div class="">
-        
-              <div class="buttons"><a href="http://localhost:3000/login">ログイン</a></div>
-              <div class="buttons"><a href="http://localhost:3000/new_acount">新規会員登録</a></div>
-      </div>
-
+  <section class="top mx_auto" >
+              <div class="top_btns mt_20 tx_center"><a class="top_btns_link" href="http://localhost:3000/login">ログイン</a></div>
+              <div class="top_btns mt_20 tx_center"><a class="top_btns_link" href="http://localhost:3000/new_acount">新規会員登録</a></div>
   </section>
 </template>
