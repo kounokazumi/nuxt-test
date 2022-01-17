@@ -1,7 +1,3 @@
-<style lang="scss">
- @import "assets/app.scss";
-</style>
-
 <template>
   <section class="top mx_auto" >
               <div class="top_btns mt_20 tx_center"><a class="top_btns_link" href="http://localhost:3000/login">ログイン</a></div>
