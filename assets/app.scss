@@ -19,6 +19,13 @@
 @import "helper/box_shadow";
 @import "helper/clamp";
 
+@import "module/list";
+@import "module/box";
+@import "module/module";
+
+@import "layout/navbar";
+
+@import "pages/exam";
 @import "layouts/main";
 
 // pages
@@ -26,4 +33,4 @@
 @import "pages/new_acount";
 @import "pages/login";
 
-@import "module/module";
+
