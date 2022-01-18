@@ -1,11 +1,72 @@
 <template>
-  <nav class="ly_navbar">
-      <ul class="ly_navbar_tabList">
+  <nav class="ly_navbar d_flex ju_between al_center">
+      <ul class="ly_navbar_tabList d_flex gap_15">
           <li class="ly_navbar_tabList_item" v-on:click="isSelect('1')">買い物リスト</li>
           <li class="ly_navbar_tabList_item" v-on:click="isSelect('2')">在庫リスト</li>
       </ul>
+
+      <a class="ly_navbar_user bcol_orange col_white d_flex al_center ju_center" href="">
+        <i class="fas fa-user"></i>
+      </a>
   </nav>
 </template>
 <style lang="scss" scoped>
-
+$col_black: #777 !default;
+$col_black_dark: #404040 !default;
+$col_gray: #aaa !default;
+$col_gray_sub: #f8f8f8 !default;
+$col_gray_sub2: #f5f5f5 !default;
+$col_gray_sub3: #eee !default;
+$col_gray_sub4: #e9e9e9 !default;
+$col_gray_sub5: #f2ebe7 !default;
+$col_gray_sub6: #797979 !default;
+$col_gray_light: #bababa !default;
+$col_gray_light_sub: #7b7b7b !default;
+$col_gray_dark: #eb5d75 !default;
+$col_gray_light_sub2: #a3a3a3 !default;
+$col_gray_sub_m: #808080 !default;
+$col_white: #fff !default;
+$col_yellow: #fed840 !default;
+$col_yellow_sub: #f9f1e1 !default;
+$col_gold: #cea64f !default;
+$col_gold_sub: #f5eddc !default;
+$col_red: #ea4343 !default;
+$col_blue: #548ec9 !default;
+$col_blue_sub: #dde8f4 !default;
+$col_theme: #fd4f73 !default;
+$col_theme_2: #e86d72 !default;
+$col_theme_gray: #e0d2d2 !default;
+$col_theme_light: #fbf7f5 !default;
+$col_theme_light_2: #f8f5ef !default;
+$col_theme_sub_m: #f18d9e !default;
+$col_theme_sub: #ffedf1 !default;
+$col_theme_2_sub: #fbdfe3 !default;
+$col_accent: #00b09c !default;
+$col_accent_sub_m: #78c49c !default;
+$col_accent_sub: #d9efeb !default;
+$col_accent_sub2: #f2ebe7 !default;
+$col_orange: #ff6a06 !default;
+  .ly_navbar{
+    position: fixed;
+    height: 60px;
+    width: 100%;
+    padding: 0 5%;
+    top: 0;
+    left: 0;
+    &_tabList{
+      &_item{
+        border-bottom: 1px solid $col_gray_light;
+        padding-bottom: 5px;
+        &.isActive{
+          border-bottom: 1px solid $col_theme;
+        }
+      }
+    }
+    &_user{
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      padding: 20px;
+    }
+  }
 </style>

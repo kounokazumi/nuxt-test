@@ -42,6 +42,11 @@ module.exports = {
   css: [
     {src:'~/assets/app.scss',lang:'scss'},
   ],
+  modules: [
+    ['nuxt-sass-resources-loader', [
+      '~/assets/variablea.scss',
+    ]],
+  ],
   plugins: [
     { src: '~/plugins/firebase.js', mode: 'client' }
   ]
