@@ -1,0 +1,33 @@
+// 入力フォーム・パスワードマスクデザインテンプレート
+.form_card {
+  &_input {
+    line-height: 2em;
+  }
+  #pass {
+    margin: 0%;
+  }
+  &_msk {
+    display: block;
+  }
+  &_regist {
+    border-radius: 5px;
+    background-color: $col_orange;
+    color: $col_white;
+    border: none;
+  }
+  #cancel {
+    width: 20%;
+    padding: 13px 6%;
+    border: black 1px solid;
+    border-radius: 10px;
+  }
+}
+
+.el_btn{
+  width: max-content;
+  padding: 1em 2em;
+  border-radius: 15px;
+  text-align: center;
+  min-width: 200px;
+  font-size: 13px;
+}

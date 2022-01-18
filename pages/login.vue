@@ -1,25 +1,20 @@
-
-<style lang="scss">
- @import "layouts/module.scss";
-</style>
-
 <template>
-<section class="top-card">
-    <h1>ログイン</h1>
+<section class="login_bl w_60 mx_auto">
+    <h1 class="login_bl_title mt_20 mb_10 tx_center" >ログイン</h1>
 
-    <form>
-        <input type="text" id="name" name="name" placeholder="名前" >
-        <input type="text" id="mail" name="mail" placeholder="メールアドレス" >
-        <input v-bind:type="passType" id="pass" name="pass" placeholder="パスワード" >
-        <label class="checkbox-inline" >
+    <form class="form_card mt_10">
+        <input class="form_card_input w_100 mb_10" type="text" id="name" name="name" placeholder="名前" >
+        <input class="form_card_input w_100 mb_10" type="text" id="mail" name="mail" placeholder="メールアドレス" >
+        <input class="form_card_input w_100 mb_10" v-bind:type="passType" id="pass" name="pass" placeholder="パスワード" >
+        <label class="form_card_msk" >
             マスク解除
-            <input type="checkbox" id="passmk" v-model="passHidden" v-bind:value="false"/>
+            <input class=" mb_10 w_100 w_2" type="checkbox" id="passmk" v-model="passHidden" v-bind:value="false"/>
         </label> 
-        <input type="submit" id="regist" value="ログイン" formmethod="POST" >
+        <input class="form_card_regist mb_10 w_100 mt_10 pt_10 pb_10" type="submit" id="regist" value="ログイン" formmethod="POST" >
     </form>
-    <a href="#ps_reset" id="ps_reset">パスワードをお忘れの方はこちら</a>
-    <p>  または </p>
-    <div class="google_button">
+    <a class="login_bl_link" href="#ps_reset">パスワードをお忘れの方はこちら</a>
+    <p class="login_bl_period">  または </p>
+    <div class="login_bl_google_btn tx_center pt_10 pb_10 mx_auto">
       <v-btn
       v-on:click="SignInGoogle"
     >

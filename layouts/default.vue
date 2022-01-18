@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <main class="ly_main">
     <nuxt/>
-  </div>
+  </main>
 </template>
 <script>
 export default {

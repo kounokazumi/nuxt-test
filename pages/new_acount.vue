@@ -1,21 +1,17 @@
-<style lang="scss">
- @import "layouts/module.scss";
-</style>
-
 <template>
 <section>
-      <div class="new-acount_card">
+      <div class="new_acount_bl mt_10 mx_auto">
         <p>新規会員登録</p>
-        <form>
-          <input type="text" id="name" name="name" placeholder="名前" >
-          <input type="text" id="mail" name="mail" placeholder="メールアドレス" >
-          <input v-bind:type="passType" id="pass" name="pass" placeholder="パスワード" >
-          <label class="checkbox-inline" >
+        <form class="mt_50 form_card">
+          <input class="form_card_input w_80 mb_10  " type="text" id="name" name="name" placeholder="名前" >
+          <input class="form_card_input mb_10 w_100  " type="text" id="mail" name="mail" placeholder="メールアドレス" >
+          <input class="form_card_input mb_10 w_100 " v-bind:type="passType" id="pass" name="pass" placeholder="パスワード" >
+          <label class=" form_card_msk" >
             マスク解除
-            <input type="checkbox" id="passmk" v-model="passHidden" v-bind:value="false"/>
+            <input class=" mb_10 w_100 w_2" type="checkbox" v-model="passHidden" v-bind:value="false"/>
           </label> 
           
-          <input type="submit" id="regist" value="登録" formmethod="POST" >
+          <input class="form_card_regist mb_10 w_20 mt_10 pt_10 pb_10 " type="submit" value="登録" formmethod="POST" >
           
           
           <!-- まだできない -->

@@ -5,11 +5,20 @@
   width: 100vw;
 }
 
-.w_100 {
-  width: 100%;
+.w_80 {
+  width: 80%;
 }
 .vw_80 {
   width: 80vw;
+}
+.w_60 {
+  width: 60%;
+}
+.w_20 {
+  width: 20%;
+}
+.w_2 {
+  width: 2%;
 }
 
 @include mq(md) {

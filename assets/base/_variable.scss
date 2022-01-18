@@ -16,7 +16,7 @@ $i: 10;
 $font_sizes: ();
 @while $i <= 36 {
   $font_size: (
-    $i: $i + px,
+    $i: $i + px
   );
   $font_sizes: map-merge($font_sizes, $font_size);
   $i: $i + 1;
@@ -42,7 +42,7 @@ $col_gray_dark: #eb5d75 !default;
 $col_gray_light_sub2: #a3a3a3 !default;
 $col_gray_sub_m: #808080 !default;
 $col_white: #fff !default;
-$col_yellow: #f5c353 !default;
+$col_yellow: #fed840 !default;
 $col_yellow_sub: #f9f1e1 !default;
 $col_gold: #cea64f !default;
 $col_gold_sub: #f5eddc !default;
@@ -61,6 +61,7 @@ $col_accent: #00b09c !default;
 $col_accent_sub_m: #78c49c !default;
 $col_accent_sub: #d9efeb !default;
 $col_accent_sub2: #f2ebe7 !default;
+$col_orange: #ff6a06 !default;
 
 $site_colors: (
   "black": $col_black,
@@ -96,6 +97,7 @@ $site_colors: (
   "accent_sub_m": $col_accent_sub_m,
   "accent_sub": $col_accent_sub,
   "accent_sub2": $col_accent_sub2,
+  "orange": $col_orange
 ) !default;
 
 /* -- size --*/
@@ -113,7 +115,7 @@ $grid-sizes: (
   2: 150px,
   3: 200px,
   4: 250px,
-  5: 300px,
+  5: 300px
 ) !default;
 
 /* -- layer(z-index) -- */
@@ -124,7 +126,7 @@ $layer: (
   tooltip: 10,
   float: 5,
   cover: 1,
-  default: 1,
+  default: 1
 ) !default;
 
 /* -- media_query -- */
@@ -132,7 +134,7 @@ $breakpoints: (
   "sm": "screen and (min-width: 400px)",
   "md": "screen and (min-width: 768px)",
   "lg": "screen and (min-width: 1000px)",
-  "xl": "screen and (min-width: 1200px)",
+  "xl": "screen and (min-width: 1200px)"
 ) !default;
 @mixin mq($breakpoint: md) {
   @media #{map-get($breakpoints, $breakpoint)} {
@@ -155,8 +157,8 @@ $cloudImagePath: "https://libraly.brapla.com/";
 
 @function getUrl($url, $size: false, $dir: "web-app/") {
   @if ($size == false) {
-    @return url($cloudImagePath + $dir + $url);
+    @return url($cloudImagePath+$dir+$url);
   }
 
-  @return url($cloudImagePath + "resized-" + $size + "-" + $dir + $url);
+  @return url($cloudImagePath+"resized-"+$size+"-"+$dir+$url);
 }
