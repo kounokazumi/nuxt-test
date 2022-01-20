@@ -44,7 +44,9 @@ export default {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         // ログイン済み
+        this.$store.dispatch('flashMessage/showFlashMessage', 'ようこそ');
         this.$router.push("/buylist");
+
       } else {
         // 未ログイン
       }

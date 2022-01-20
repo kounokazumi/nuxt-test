@@ -22,6 +22,7 @@ export default {
     async update(){
       this.shoppingList[this.itemId].name = this.name;
       this.updateShoppingList();
+      this.$store.dispatch('flashMessage/showFlashMessage', '保存完了しました');
       this.$router.push("/buylist");
     },
     // DBから買い物リストを取得

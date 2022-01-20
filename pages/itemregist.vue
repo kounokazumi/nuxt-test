@@ -21,6 +21,7 @@ export default {
     async regist(){
       this.shoppingList.push({name:this.name});
       this.updateShoppingList();
+      this.$store.dispatch('flashMessage/showFlashMessage', '登録完了しました');
       this.$router.push("/buylist");
     },
     // DBから買い物リストを取得

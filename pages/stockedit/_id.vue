@@ -25,6 +25,7 @@ export default {
       this.stockList[this.itemId].name = this.name;
       this.stockList[this.itemId].date = this.date;
       this.updateStockList();
+      this.$store.dispatch('flashMessage/showFlashMessage', '保存完了しました');
       this.$router.push("/stocklist");
     },
     // DBから買い物リストを取得
