@@ -49,7 +49,8 @@ module.exports = {
   ],
   plugins: [
     { src: '~/plugins/firebase.js', mode: 'client' },
-    '@/plugins/shoppings'
+    '@/plugins/shoppings',
+    '@/plugins/stocks'
   ]
   
 }

@@ -23,11 +23,6 @@ export default {
       this.updateShoppingList();
       this.$router.push("/buylist");
     },
-    // 買い物リストからアイテムを削除
-    async deleteShoppingItem(index){
-      this.shoppingList.splice(index,1);
-      this.updateShoppingList();
-    },
     // DBから買い物リストを取得
     async getShopingList(){
       let userShopping = await this.$shoppingsGet();
