@@ -8,7 +8,18 @@
     </form>
   </div>  
 </template>
-
-<style lang="scss" scoped>
-
-</style> 
+<script>
+export default {
+  data(){
+    return{
+      name:'',
+      date:'',
+    }
+  },
+  methods:{
+    regist(){
+      console.log(this.name);
+    }
+  }
+}
+</script>

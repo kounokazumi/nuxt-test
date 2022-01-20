@@ -10,6 +10,17 @@
   </div>  
 </template>
 
-<style lang="scss" scoped>
-
-</style> 
+<script>
+export default {
+  data(){
+    return{
+      name:'',
+    }
+  },
+  methods:{
+    regist(){
+      console.log(this.name);
+    }
+  }
+}
+</script>
