@@ -3,9 +3,9 @@
     <Navbar/>
 
     <ul class="bl_itemManage_list d_grid gap_25 mt_30">
-      <li class="bl_itemManage_list_item d_grid al_center gap_15">
+      <li class="bl_itemManage_list_item d_grid al_center gap_15" v-for="(item, itemKey) in shoppingList" v-bind:key="itemKey">
         <input class="bl_itemManage_list_item_check" type="checkbox" name="" id="">
-        <p class="bl_itemManage_list_item_name">アイテム名が入ります</p>
+        <p class="bl_itemManage_list_item_name">{{ item.name }}</p>
         <div class="bl_itemManage_list_item_icons d_grid gap_5">
           <i class="bl_itemManage_list_item_icons_success fas fa-circle"></i>
           <i class="bl_itemManage_list_item_icons_error fas fa-minus-circle"></i>
@@ -20,11 +20,28 @@
 </template>
 
 <script>
-  export default{
-    // コンポーネント呼び出し
-    components: {
-      Navbar: () => import('~/layouts/navbar')
-    },
+export default{
+  // コンポーネント呼び出し
+  components: {
+    Navbar: () => import('~/layouts/navbar')
+  },
+
+  data(){
+    return {
+      shoppingList:[],
+    }
+  },
+
+  methods:{
+    // 買い物リストを取得
+    async getShopingList(){
+      let userShopping = await this.$shoppings();
+      this.shoppingList = userShopping.list;
+    }
+  },
+  mounted(){
+    this.getShopingList();
+  }
     
 }
 </script>
