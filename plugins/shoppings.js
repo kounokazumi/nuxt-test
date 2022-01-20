@@ -2,7 +2,7 @@ import { doc, getDoc, setDoc } from 'firebase/firestore'
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { getFirestore } from '@firebase/firestore';
 
-const shoppings = async() => {
+const getShoppings = async() => {
   // uidを取得
   let uid = "";
   await new Promise(resolve => {
@@ -26,6 +26,22 @@ const shoppings = async() => {
   return item;
 }
 
+const updateShoppings = async(list) => {
+  // uidを取得
+  let uid = "";
+  await new Promise(resolve => {
+    onAuthStateChanged(getAuth(), (user) => {
+      uid = user.uid;
+      resolve();
+    })
+  })
+
+  // 自分に紐づくアイテムを更新
+  const userShoppingsDoc = doc(getFirestore(), "shoppings", uid);
+  setDoc(userShoppingsDoc, { list: list });
+}
+
 export default({}, inject) => {
-  inject('shoppings', shoppings);
+  inject('shoppingsGet', getShoppings);
+  inject('shoppingsUpdate', updateShoppings);
 }

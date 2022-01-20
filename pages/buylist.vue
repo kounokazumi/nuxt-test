@@ -8,7 +8,7 @@
         <p class="bl_itemManage_list_item_name">{{ item.name }}</p>
         <div class="bl_itemManage_list_item_icons d_grid gap_5">
           <i class="bl_itemManage_list_item_icons_success fas fa-circle"></i>
-          <i class="bl_itemManage_list_item_icons_error fas fa-minus-circle"></i>
+          <i class="bl_itemManage_list_item_icons_error fas fa-minus-circle" v-on:click="deleteShoppingItem(itemKey)"></i>
         </div>
       </li>
     </ul>
@@ -33,10 +33,19 @@ export default{
   },
 
   methods:{
-    // 買い物リストを取得
+    // DBから買い物リストを取得
     async getShopingList(){
-      let userShopping = await this.$shoppings();
+      let userShopping = await this.$shoppingsGet();
       this.shoppingList = userShopping.list;
+    },
+    // DBの買い物リストを更新
+    async updateShoppingList(){
+      await this.$shoppingsUpdate(this.shoppingList);
+    },
+    // 買い物リストからアイテムを削除
+    async deleteShoppingItem(index){
+      this.shoppingList.splice(index,1);
+      this.updateShoppingList();
     }
   },
   mounted(){
