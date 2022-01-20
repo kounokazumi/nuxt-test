@@ -2,11 +2,12 @@
   <div class="bl_itemManage">
     <Navbar/>
 
+    
     <p class="tx_center" v-if="shoppingList.length == 0">買うものが登録されていません</p>
 
     <ul class="bl_itemManage_list d_grid gap_25 mt_30" v-else>
       <li class="bl_itemManage_list_item d_grid al_center gap_15" v-for="(item, itemKey) in shoppingList" v-bind:key="itemKey">
-        <input class="bl_itemManage_list_item_check" type="checkbox" name="" id="">
+        <input class="bl_itemManage_list_item_check" v-model="checkItems" v-bind:value="itemKey" type="checkbox" name="" id="">
         <NuxtLink class="bl_itemManage_list_item_name" v-bind:to="{name:'itemedit-id', params:{id:itemKey}}">{{ item.name }}</NuxtLink>
         <div class="bl_itemManage_list_item_icons d_grid gap_5">
           <i class="bl_itemManage_list_item_icons_success fas fa-circle"></i>
@@ -14,8 +15,12 @@
         </div>
       </li>
     </ul>
-    
-    <NuxtLink class="bl_itemManage_addBtn d_flex al_center ju_center" to="/itemregist">
+
+    <!-- 削除ボタン -->
+    <button class="el_btn col_white bcol_red mt_30 w_100" type="button" v-if="checkItems.length != 0" v-on:click="deleteCheckItems">{{ checkItems.length }}件削除する</button>
+
+    <!-- 追加ボタン -->
+    <NuxtLink class="bl_itemManage_addBtn d_flex al_center ju_center" to="/itemregist" v-else>
       <i class="bl_itemManage_addBtn_icon fas fa-plus-circle"></i>
     </NuxtLink>
   </div>
@@ -31,6 +36,7 @@ export default{
   data(){
     return {
       shoppingList:[],
+      checkItems:[],
     }
   },
 
@@ -48,6 +54,13 @@ export default{
     async deleteShoppingItem(index){
       this.shoppingList.splice(index,1);
       this.updateShoppingList();
+    },
+    // チェックしているアイテムをまとめて削除
+    async deleteCheckItems(){
+      for (let index = this.checkItems.length; index > 0; index--) {
+        this.deleteShoppingItem(this.checkItems[index - 1])        
+      }
+      this.checkItems = [];
     }
   },
   mounted(){
