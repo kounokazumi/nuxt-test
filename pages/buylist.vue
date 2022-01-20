@@ -13,9 +13,9 @@
       </li>
     </ul>
     
-    <button class="bl_itemManage_addBtn d_flex al_center ju_center">
+    <NuxtLink class="bl_itemManage_addBtn d_flex al_center ju_center" to="/itemregist">
       <i class="bl_itemManage_addBtn_icon fas fa-plus-circle"></i>
-    </button>
+    </NuxtLink>
   </div>
 </template>
 
