@@ -13,12 +13,33 @@ export default {
   data(){
     return{
       name:'',
+      shoppingList:[],
     }
   },
   methods:{
-    regist(){
-      console.log(this.name);
-    }
+    // アイテムを登録
+    async regist(){
+      this.shoppingList.push({name:this.name});
+      this.updateShoppingList();
+      this.$router.push("/buylist");
+    },
+    // 買い物リストからアイテムを削除
+    async deleteShoppingItem(index){
+      this.shoppingList.splice(index,1);
+      this.updateShoppingList();
+    },
+    // DBから買い物リストを取得
+    async getShopingList(){
+      let userShopping = await this.$shoppingsGet();
+      this.shoppingList = userShopping.list;
+    },
+    // DBの買い物リストを更新
+    async updateShoppingList(){
+      await this.$shoppingsUpdate(this.shoppingList);
+    },
+  },
+  mounted(){
+    this.getShopingList();
   }
 }
 </script>
