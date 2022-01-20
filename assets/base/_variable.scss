@@ -62,6 +62,7 @@ $col_accent_sub_m: #78c49c !default;
 $col_accent_sub: #d9efeb !default;
 $col_accent_sub2: #f2ebe7 !default;
 $col_orange: #ff6a06 !default;
+$col_green: #00b09c !default;
 
 $site_colors: (
   "black": $col_black,
@@ -97,7 +98,8 @@ $site_colors: (
   "accent_sub_m": $col_accent_sub_m,
   "accent_sub": $col_accent_sub,
   "accent_sub2": $col_accent_sub2,
-  "orange": $col_orange
+  "orange": $col_orange,
+  "green": $col_green
 ) !default;
 
 /* -- size --*/

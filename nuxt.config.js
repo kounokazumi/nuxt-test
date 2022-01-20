@@ -42,8 +42,16 @@ module.exports = {
   css: [
     {src:'~/assets/app.scss',lang:'scss'},
   ],
+  modules: [
+    ['nuxt-sass-resources-loader', [
+      '~/assets/variablea.scss',
+    ]],
+    'bootstrap-vue/nuxt',
+  ],
   plugins: [
-    { src: '~/plugins/firebase.js', mode: 'client' }
+    { src: '~/plugins/firebase.js', mode: 'client' },
+    '@/plugins/shoppings',
+    '@/plugins/stocks',
   ]
   
 }
