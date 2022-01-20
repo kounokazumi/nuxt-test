@@ -1,19 +1,40 @@
-.list2{
-    ul{
-        padding: 0.3em 0.5em;
-        position: relative;
-        color: #000000;
-        list-style-type: none;
-        font-weight:700;
-        color: #424242;
-        li{
-            line-height: 2.0;
-            padding: 0.5em 0 0.5em 1.4em;
-            border-bottom: dashed 1px #8a8a8a;
-            width: 500px;
+.bl_itemManage{
+  width: 100%;
+  &_list{
+    width: 100%;
+
+    &_item{
+      grid-template-columns: 30px 1fr auto;
+      border-bottom: 1px dashed $col_gray_light;
+      padding: 15px 10px;
+
+      &_status{
+        position: absolute;
+        font-size: 10px;
+        top: 5px;
+        left: 10px;
+      }
+
+      &_icons{
+        grid-template-columns: 1fr 1fr;
+        font-size: 18px;
+        &_success{
+          color: $col_accent;
         }
+  
+        &_error{
+          color: $col_theme;
+        }
+      }
     }
-    ol{
-        counter-reset: number;
+  }
+  &_addBtn{
+    width: 100%;
+    padding: 10px 0px;
+    border: none;
+    font-size: 25px;
+    &_icon{
+      color: $col_orange;
     }
+  }
 }
