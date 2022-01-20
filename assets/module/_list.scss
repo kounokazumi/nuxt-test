@@ -11,8 +11,19 @@
       &_status{
         position: absolute;
         font-size: 10px;
-        top: 5px;
+        top: 0px;
         left: 10px;
+
+        // 期限までの日数で色を変える
+        &.period{
+          color: $col_green;
+          &_0{
+            color: $col_red;
+          }
+          &_1{
+            color: $col_blue;
+          }
+        }
       }
 
       &_icons{
