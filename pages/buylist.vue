@@ -2,7 +2,7 @@
   <div class="bl_itemManage">
     <Navbar/>
 
-    <p class="tx_center" v-if="stockList.length == 0">買うものが登録されていません</p>
+    <p class="tx_center" v-if="shoppingList.length == 0">買うものが登録されていません</p>
 
     <ul class="bl_itemManage_list d_grid gap_25 mt_30" v-else>
       <li class="bl_itemManage_list_item d_grid al_center gap_15" v-for="(item, itemKey) in shoppingList" v-bind:key="itemKey">

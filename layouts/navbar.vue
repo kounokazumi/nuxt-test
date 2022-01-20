@@ -1,8 +1,12 @@
 <template>
   <nav class="ly_navbar d_flex ju_between al_center">
       <ul class="ly_navbar_tabList d_flex gap_15">
-          <li class="ly_navbar_tabList_item" v-on:click="isSelect('1')">買い物リスト</li>
-          <li class="ly_navbar_tabList_item" v-on:click="isSelect('2')">在庫リスト</li>
+          <li class="ly_navbar_tabList_item">
+            <NuxtLink to="/buylist">買い物リスト</NuxtLink>
+          </li>
+          <li class="ly_navbar_tabList_item">
+            <NuxtLink to="/stocklist">在庫リスト</NuxtLink>
+          </li>
       </ul>
 
       <button class="ly_navbar_user bcol_orange col_white d_flex al_center ju_center" type="button" v-on:click="toggleShowSidebar">

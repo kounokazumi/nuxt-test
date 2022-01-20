@@ -10,7 +10,7 @@
         <span class="bl_itemManage_list_item_status col_theme" v-bind:class="'period_' + Math.floor(getPeriod(item.date) / 5)">あと{{ getPeriod(item.date) }}日</span>
         <NuxtLink class="bl_itemManage_list_item_name" v-bind:to="{name:'stockedit-id', params:{id:itemKey}}">{{ item.name }}</NuxtLink>
         <div class="bl_itemManage_list_item_icons d_grid gap_5">
-          <i class="bl_itemManage_list_item_icons_success fas fa-plus-circle"></i>
+          <i class="bl_itemManage_list_item_icons_success fas fa-plus-circle" v-on:click="moveShoppingList(itemKey)"></i>
         </div>
       </li>
     </ul>
@@ -33,24 +33,31 @@ export default{
   data(){
     return {
       stockList:[],
+      shoppingList:[],
     }
   },
 
   methods:{
-    // DBから買い物リストを取得
+    // DBから在庫リストを取得
     async getStockList(){
       let userStocke = await this.$stocksGet();
       this.stockList = userStocke.list;
     },
-    // DBの買い物リストを更新
-    async updateStockList(){
-      await this.$stocksUpdate(this.stockList);
+    // DBから買い物リストを取得
+    async getShoppingList(){
+      let userShopping = await this.$shoppingsGet();
+      this.shoppingList = userShopping.list;
     },
-    // 買い物リストからアイテムを削除
-    async deleteShoppingItem(index){
-      this.stockList.splice(index,1);
-      this.updateStockList();
+    // DBの在庫リストを更新
+    async updateShoppingList(){
+      await this.$shoppingsUpdate(this.shoppingList);
     },
+    // 在庫リストからアイテムを買い物リストに追加する
+    async moveShoppingList(index){
+      this.shoppingList.push(this.stockList[index])
+      this.updateShoppingList();
+    },
+    // 消費期限までの日数を取得
     getPeriod(date){
       let toDay     = Date.today();
       let periodDay = new Date(date);
@@ -59,6 +66,7 @@ export default{
   },
   mounted(){
     this.getStockList();
+    this.getShoppingList();
   }
     
 }
