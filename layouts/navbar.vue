@@ -33,6 +33,7 @@
           </li>
         </ul>
       </div>
+      <p class="ly_navbar_flashMessage" v-bind:class="{isActive:isActiveFlashMessage}">{{ flashMessage }}</p>
   </nav>
 </template>
 
@@ -63,6 +64,14 @@ export default {
         this.hiddenSidebar();
       }
     });
+  },
+  computed:{
+    flashMessage(){
+      return this.$store.state.flashMessage.text;
+    },
+    isActiveFlashMessage(){
+      return this.$store.state.flashMessage.status;
+    },
   }
 }
 </script>
@@ -146,6 +155,23 @@ $col_orange: #ff6a06 !default;
             border-bottom: 1px solid $col_gray_light;
           }
         }
+      }
+    }
+    &_flashMessage{
+      position: fixed;
+      top: 10px;
+      right: 0px;
+      transition: 0.3s;
+      transform: translateX(100%);
+      background: $col_white;
+      border: 3px solid $col_accent;
+      border-radius: 5px;
+      opacity: 0;
+      padding: 5px 10px;
+      &.isActive{
+        right: 5vw;
+        transform: unset;
+        opacity: 1;
       }
     }
   }
