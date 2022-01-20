@@ -16,12 +16,21 @@
     </ul>
 
     <!-- 削除ボタン -->
-    <button class="el_btn col_white bcol_red mt_30 w_100" type="button" v-if="checkItems.length != 0" v-on:click="deleteCheckItems">{{ checkItems.length }}件削除する</button>
+    <button class="el_btn col_white bcol_red mt_30 w_100" type="button" v-if="checkItems.length != 0" v-on:click="showModal">{{ checkItems.length }}件削除する</button>
 
     <!-- 追加ボタン -->
     <NuxtLink class="bl_itemManage_addBtn d_flex al_center ju_center" to="/stockregist" v-else>
       <i class="bl_itemManage_addBtn_icon fas fa-plus-circle"></i>
     </NuxtLink>
+
+    <b-modal id="modal-1" title="削除の確認" hide-footer>
+      <p class="mt_15">選択しているアイテムを削除します。</p>
+      <p class="mt_5">よろしいでしょうか？</p>
+      <div class="d_flex mt_30 gap_15">
+        <button class="el_btn bcol_red col_white" type="button" v-on:click="deleteCheckItems">削除</button>
+        <button class="el_btn bcol_gray col_white" type="button" v-on:click="hideModal">キャンセル</button>
+      </div>
+    </b-modal>
   </div>
 </template>
 
@@ -77,6 +86,16 @@ export default{
         this.deleteStockItem(this.checkItems[index - 1])        
       }
       this.checkItems = [];
+      this.$bvModal.hide('modal-1')
+      this.$store.dispatch('flashMessage/showFlashMessage', '削除が完了しました！');
+    },
+    // 確認モーダルを表示
+    async showModal(){
+      this.$bvModal.show('modal-1')
+    },
+    // 確認モーダルを閉じる
+    async hideModal(){
+      this.$bvModal.hide('modal-1')
     },
     // 消費期限までの日数を取得
     getPeriod(date){
