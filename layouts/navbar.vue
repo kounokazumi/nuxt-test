@@ -5,11 +5,64 @@
           <li class="ly_navbar_tabList_item" v-on:click="isSelect('2')">在庫リスト</li>
       </ul>
 
-      <a class="ly_navbar_user bcol_orange col_white d_flex al_center ju_center" href="">
+      <button class="ly_navbar_user bcol_orange col_white d_flex al_center ju_center" type="button" v-on:click="toggleShowSidebar">
         <i class="fas fa-user"></i>
-      </a>
+      </button>
+
+      <div class="ly_navbar_sidebar" v-bind:class="{'isActive':isShowSidebar}">
+        <p class="tx_right" v-on:click="hiddenSidebar">
+          メニューを閉じる
+          <i class="fas fa-chevron-right"></i>
+        </p>
+        <ul class="ly_navbar_sidebar_manuList d_grid fs_15 mt_30">
+          <li class="ly_navbar_sidebar_manuList_item">
+            <NuxtLink to="/">マイページ</NuxtLink>
+          </li>
+          <li class="ly_navbar_sidebar_manuList_item">
+            <NuxtLink to="/buylist">買い物リスト</NuxtLink>
+          </li>
+          <li class="ly_navbar_sidebar_manuList_item">
+            <NuxtLink to="/stocklist">在庫リスト</NuxtLink>
+          </li>
+          <li class="ly_navbar_sidebar_manuList_item">
+            <button class="el_btn col_theme col_white mx_auto d_bl" type="button" v-on:click="signOut">ログアウト</button>
+          </li>
+        </ul>
+      </div>
   </nav>
 </template>
+
+<script>
+export default {
+  data(){
+    return{
+      isShowSidebar: false,
+    }
+  },
+  methods:{
+    // サイドバーのオンオフ
+    toggleShowSidebar(){
+      this.isShowSidebar = !this.isShowSidebar;
+    },
+    hiddenSidebar(){
+      this.isShowSidebar = false;
+    },
+    signOut(){
+      this.$fb.auth().signOut();
+      this.$router.push("/");
+    }
+  },
+  mounted(){
+    /*------------------------- リスト外クリック 非アクティブ化 -------------------------*/
+    document.addEventListener('click', (e) => {
+      if(!e.target.closest(`.ly_navbar_sidebar`) && !e.target.closest(`.ly_navbar_user`)) {
+        this.hiddenSidebar();
+      }
+    });
+  }
+}
+</script>
+
 <style lang="scss" scoped>
 $col_black: #777 !default;
 $col_black_dark: #404040 !default;
@@ -53,6 +106,7 @@ $col_orange: #ff6a06 !default;
     padding: 0 5%;
     top: 0;
     left: 0;
+    z-index: 10;
     &_tabList{
       &_item{
         border-bottom: 1px solid $col_gray_light;
@@ -67,6 +121,28 @@ $col_orange: #ff6a06 !default;
       width: 20px;
       height: 20px;
       padding: 20px;
+    }
+    &_sidebar{
+      position: absolute;
+      right: 0px;
+      top: 0px;
+      height: 100vh;
+      width: 90vw;
+      padding: 10px 20px;
+      transform: translateX(100%);
+      transition: 0.3s;
+      background: $col_gray_sub2;
+      &.isActive{
+        transform: unset;
+      }
+      &_manuList{
+        &_item{
+          padding: 20px 0;
+          &:not(:last-child){
+            border-bottom: 1px solid $col_gray_light;
+          }
+        }
+      }
     }
   }
 </style>
