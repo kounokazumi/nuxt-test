@@ -74,6 +74,7 @@ export default{
     async moveShoppingList(index){
       this.shoppingList.push(this.stockList[index])
       this.updateShoppingList();
+      this.$store.dispatch('flashMessage/showFlashMessage', '買い物リストに追加しました！');
     },
     // 在庫リストからアイテムを削除
     async deleteStockItem(index){
