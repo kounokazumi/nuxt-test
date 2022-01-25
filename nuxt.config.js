@@ -72,16 +72,19 @@ module.exports = {
       }
     ],
   },
-  serverMiddleware: [
-    { path: "/server-middleware", handler: "~/server-middleware/rest.js" },
-  ],
 
   axios: {
     proxy: true,
+    prefix: '/api'
   },
 
   proxy: {
-    '/server-middleware/': 'https://sotuken-test.web.app',
+    '/api/': {
+      target: `https://api.line.me`,
+      pathRewrite: {
+        '^/api/': '/v2/bot/',
+      },
+    },
   }
   
 }

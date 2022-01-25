@@ -105,9 +105,13 @@ export default{
       return toDay.getDaysBetween(periodDay);
     },
   },
-  mounted(){
+  async mounted(){
     this.getStockList();
     this.getShoppingList();
+
+    let config = await this.$alertStocks();
+    this.$axios.$post('/message/push', config.params, {headers:config.headers})
+    // console.log(config);
   }
     
 }
