@@ -31,12 +31,19 @@ export default {
       liffId: "1656829973-Wg9XXLKp"
     })
     .then(()=>{
-      //プロフィール情報の取得
-      liff.getProfile()
-        .then(profile=>{
-          this.userId = profile.userId;
-          this.$axios.$post('/server-middleware/userId', {name:"test", userId:profile.userId})
-        })
+      if (liff.isLoggedIn()) {
+        liff.getProfile()
+          .then(profile=>{
+            this.userId = profile.userId;
+            this.name = profile.displayName
+            this.$profilesUpdate({
+              name:profile.displayName,
+              userId:profile.userId
+            });
+          })
+      } else {
+        liff.login();
+      }
     })
   }
 }
