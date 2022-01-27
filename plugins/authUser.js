@@ -1,8 +1,19 @@
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 const getAuthUser = async() => {
-  const auth = getAuth();
-  return auth.currentUser;
+  let auth = getAuth();
+  let authUser = {};
+
+  const myPromise = new Promise((resolve, reject) => {
+    onAuthStateChanged(auth, (user) => {
+      authUser = user;
+      resolve();
+    })
+  });
+
+  await myPromise;
+  
+  return authUser;
 };
 
 const updateAuthUser = async(user) => {
