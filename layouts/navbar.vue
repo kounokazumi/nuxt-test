@@ -20,7 +20,7 @@
         </p>
         <ul class="ly_navbar_sidebar_manuList d_grid fs_15 mt_30">
           <li class="ly_navbar_sidebar_manuList_item">
-            <NuxtLink to="/">マイページ</NuxtLink>
+            <NuxtLink to="/my_page">マイページ</NuxtLink>
           </li>
           <li class="ly_navbar_sidebar_manuList_item">
             <NuxtLink to="/buylist">買い物リスト</NuxtLink>
