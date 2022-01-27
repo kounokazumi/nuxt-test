@@ -46,12 +46,19 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 export default {
     data(){
         return{
-            user:{},
+            user:{
+               name:"" 
+            },
         }
     },
     methods:{
         updateAuthUser(){
             this.$updateAuthUser(this.user);
+            },
+        getUserInfo(){
+          let profile = this.$profilesGet();
+
+          console.log(profile);
         }
     },
     async mounted(){

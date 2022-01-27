@@ -30,6 +30,9 @@ export default {
           // Signed in
           const user = userCredential.user;
           this.$router.push("/buylist");
+          this.$profilesUpdate({
+              displayName:this.name,
+            });
         })
         .catch((error) => {
           const errorCode = error.code;
