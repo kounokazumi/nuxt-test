@@ -19,6 +19,11 @@
           <i class="fas fa-chevron-right"></i>
         </p>
         <ul class="ly_navbar_sidebar_manuList d_grid fs_15 mt_30">
+          <div class="box0">
+            <img src="../image/piyoko.png">
+            <h3>木村隆宮</h3>
+            <div v-bind:value="user"/>
+          </div>
           <li class="ly_navbar_sidebar_manuList_item">
             <NuxtLink to="/my_page">マイページ</NuxtLink>
           </li>
@@ -42,6 +47,7 @@ export default {
   data(){
     return{
       isShowSidebar: false,
+      user:{},
     }
   },
   methods:{
@@ -55,7 +61,10 @@ export default {
     signOut(){
       this.$fb.auth().signOut();
       this.$router.push("/");
-    }
+    },
+  },
+  async mounted(){
+        this.user = this.$getProfile();
   },
   mounted(){
     /*------------------------- リスト外クリック 非アクティブ化 -------------------------*/
@@ -136,6 +145,14 @@ $col_orange: #ff6a06 !default;
       padding: 20px;
     }
     &_sidebar{
+      img{
+        width: 80px; /*幅*/
+        height: auto; /*縦横比を維持する高さを自動計算*/
+      }
+
+      .box0{
+        text-align: center; /*中央寄せ*/
+      }
       position: absolute;
       right: 0px;
       top: 0px;
