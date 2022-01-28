@@ -18,6 +18,7 @@ export default {
       name:'',
       email:'',
       password:'',
+      userid:'',
     }
   },
   methods:{
@@ -30,15 +31,17 @@ export default {
           // Signed in
           const user = userCredential.user;
           this.$router.push("/buylist");
-          this.$profilesUpdate({
-              displayName:this.name,
-            });
+           this.$profilesUpdate({
+               name:this.name,
+               userId:this.userid
+          });
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
           console.log(errorCode,errorMessage);
         });
+        
     },
   },
   mounted(){
