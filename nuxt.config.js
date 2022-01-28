@@ -54,6 +54,8 @@ module.exports = {
     { src: '~/plugins/firebase.js', mode: 'client' },
     '@/plugins/shoppings',
     '@/plugins/stocks',
+    '@/plugins/authUser',
+  ]
     '@/plugins/profiles',
   ],
   manifest: {
@@ -86,6 +88,4 @@ module.exports = {
       },
     },
   }
-  
 }
-
