@@ -1,4 +1,4 @@
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { getAuth, onAuthStateChanged, updateEmail } from "firebase/auth";
 
 const getAuthUser = async() => {
   let auth = getAuth();
@@ -18,15 +18,6 @@ const getAuthUser = async() => {
 
 const updateAuthUser = async(user) => {
   const auth = getAuth();
-  updateProfile(auth.currentUser, {
-    displayName: user.displayName, photoURL: user.photoURL
-  }).then(() => {
-    // Profile updated!
-    // ...
-  }).catch((error) => {
-    // An error occurred
-    // ...
-  });
 
   updateEmail(auth.currentUser, user.email).then(() => {
     // Email updated!
