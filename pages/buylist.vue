@@ -36,6 +36,8 @@
 </template>
 
 <script>
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+
 export default{
   // コンポーネント呼び出し
   components: {
@@ -44,9 +46,13 @@ export default{
 
   data(){
     return {
-      shoppingList:[],
       checkItems:[],
     }
+  },
+  computed:{
+    shoppingList() {
+      return this.$store.state.shoppingList.list
+    },
   },
 
   methods:{
@@ -83,8 +89,10 @@ export default{
     },
   },
   mounted(){
-    this.getShopingList();
-  }
+    onAuthStateChanged(getAuth(), (user) => {
+      this.$store.dispatch('shoppingList/fetchList')
+    });
+  },
     
 }
 </script>
