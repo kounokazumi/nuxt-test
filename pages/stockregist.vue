@@ -1,11 +1,11 @@
 <template>
   <div>
     <h2 class="fs_30 tx_center">在庫を追加</h2>
-    <form class="mt_100 d_grid gap_30" action="">
+    <div class="mt_100 d_grid gap_30" action="">
       <input class="el_input" v-model="name" type="text" placeholder="名前">
       <input class="el_input" v-model="date" type="date" placeholder="いつまで">
       <button class="el_btn bcol_orange col_white w_100 fs_12" type="button" v-on:click="regist">登録</button>
-    </form>
+    </div>
   </div>  
 </template>
 <script>
