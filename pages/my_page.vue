@@ -4,6 +4,7 @@
     <Navbar/>
 
     <h1 class="mypage_bl_title mt_10 mb_10">Profile</h1>
+    
     <div class="mypage_bl_card mx_auto d_grid gap_15">
         <label class="d_grid" >
             メールアドレス
@@ -17,6 +18,7 @@
         <button type="button" v-on:click="update">保存</button>
     </div>
 </div>
+
 </template>
 
 <script>

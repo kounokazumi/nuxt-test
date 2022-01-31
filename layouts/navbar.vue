@@ -21,8 +21,8 @@
         <ul class="ly_navbar_sidebar_manuList d_grid fs_15 mt_30">
           <div class="box0">
             <img src="../image/piyoko.png">
-            <h3>木村隆宮</h3>
-            <div v-bind:value="user"/>
+            <h3>{{profile.name}}</h3>
+            
           </div>
           <li class="ly_navbar_sidebar_manuList_item">
             <NuxtLink to="/my_page">マイページ</NuxtLink>
@@ -48,6 +48,10 @@ export default {
     return{
       isShowSidebar: false,
       user:{},
+      profile:{
+        name:"",
+        email:"",
+      }
     }
   },
   methods:{
@@ -63,10 +67,11 @@ export default {
       this.$router.push("/");
     },
   },
+
   async mounted(){
-        this.user = this.$getProfile();
-  },
-  mounted(){
+        
+    this.profile = await this.$profilesGet();
+
     /*------------------------- リスト外クリック 非アクティブ化 -------------------------*/
     document.addEventListener('click', (e) => {
       if(!e.target.closest(`.ly_navbar_sidebar`) && !e.target.closest(`.ly_navbar_user`)) {
