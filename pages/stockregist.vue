@@ -20,7 +20,11 @@ export default {
   methods:{
     // アイテムを登録
     async regist(){
-      this.stockList.push({name:this.name,date:this.date});
+      this.stockList.push({
+        name:this.name,
+        date:this.date,
+        isSend:false,
+      });
       this.updateStockList();
       this.$store.dispatch('flashMessage/showFlashMessage', '登録完了しました');
       this.$router.push("/stocklist");

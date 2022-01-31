@@ -2,6 +2,7 @@ import { doc, getDoc, setDoc } from 'firebase/firestore'
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { getFirestore } from '@firebase/firestore';
 import axios from 'axios';
+require('date-utils')
 
 const getStocks = async() => {
   // uidを取得
@@ -61,42 +62,27 @@ const alertStocks = async() => {
     }
   });
 
-  let stockListMessage = '';
-  list.forEach(item => {
-    stockListMessage += `・${item.name}:${item.date}まで\n`;
-  });
-
-  // 自分に紐づくアイテムを取得
-  const userProfileDoc = doc(getFirestore(), "profiles", uid);
-  let user = {};
-  await getDoc(userProfileDoc).then((doc) => {
-    if (doc.exists()) {
-      user = doc.data();
+  let alertStockList = [];
+  let toDay          = Date.today();
+  for (let index = 0; index < list.length; index++) {
+    let item      = list[index];
+    if (!item.date) {
+      continue;
     }
-  });
+    let periodDay = new Date(item.date);
+    let period    = toDay.getDaysBetween(periodDay)
 
-  // LINE BOTに送信
-  let token = '7J/cu6HBdesqyiAMtbtGX9a+19MPjaciXuBzucc4CPjSwX+FGUko+eQm056DirlYLdISMFdGG3onhW5ZzHl5KQz7DFmRJRSOrva0t3VyyrZx+GnK7in613oiEmGqQYkOpkK5sDvaEMuK8A7glAlOMgdB04t89/1O/w1cDnyilFU=';
-  return {
-    headers: {
-      'Authorization': `Bearer ${token}`,
-      'Content-Type': 'application/json'
-    },
-    params: {
-      to: user.userId,
-      messages:[
-        {
-          type:'text',
-          text:"在庫の消費期限が近づいてきました！\n"
-        },
-        {
-          type:'text',
-          text:stockListMessage
-        },
-      ],
-      notificationDisabled:true
+    // まだ通知してなくて、期限まで後５日のアイテムを通知する
+    if (item.isSend == false && period <= 5) {    
+      alertStockList.push(item);
+      list[index].isSend = true;
     }
   }
+
+  // 送信済みリストを更新
+  updateStocks(list);
+
+  return alertStockList;
 };
 
 export default({}, inject) => {

@@ -34,6 +34,18 @@
         </ul>
       </div>
       <p class="ly_navbar_flashMessage" v-bind:class="{isActive:isActiveFlashMessage}">{{ flashMessage }}</p>
+
+      <b-modal id="limit-modal" title="期限の報告" hide-footer>
+        <p class="mt_15">期限が迫っているアイテムがあります。</p>
+        <ul>
+          <li v-for="(item, itemKey) in alertStockList" v-bind:key="itemKey">
+            ・{{ item.name }}
+          </li>
+        </ul>
+        <div class="d_flex mt_30 gap_15">
+          <button class="el_btn bcol_orange col_white" type="button" v-on:click="checkAlert">確認する</button>
+        </div>
+      </b-modal>
   </nav>
 </template>
 
@@ -42,6 +54,7 @@ export default {
   data(){
     return{
       isShowSidebar: false,
+      alertStockList:[],
     }
   },
   methods:{
@@ -55,6 +68,24 @@ export default {
     signOut(){
       this.$fb.auth().signOut();
       this.$router.push("/");
+    },
+    async alertStock(){
+      this.alertStockList = await this.$alertStocks();
+      if (this.alertStockList.length > 0) {
+        this.showModal();
+      }
+    },
+    // 確認モーダルを表示
+    async showModal(){
+      this.$bvModal.show('limit-modal')
+    },
+    // 確認モーダルを閉じる
+    async hideModal(){
+      this.$bvModal.hide('limit-modal')
+    },
+    async checkAlert(){
+      this.$router.push("stocklist");
+      this.hideModal();
     }
   },
   mounted(){
@@ -64,6 +95,9 @@ export default {
         this.hiddenSidebar();
       }
     });
+
+    this.alertStock();
+
   },
   computed:{
     flashMessage(){
