@@ -86,5 +86,5 @@ module.exports = {
         '^/api/': '/v2/bot/',
       },
     },
-  }
+  },
 }

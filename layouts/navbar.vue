@@ -19,6 +19,11 @@
           <i class="fas fa-chevron-right"></i>
         </p>
         <ul class="ly_navbar_sidebar_manuList d_grid fs_15 mt_30">
+          <div class="box0">
+            <img src="../image/piyoko.png">
+            <h3>{{profile.name}}</h3>
+            
+          </div>
           <li class="ly_navbar_sidebar_manuList_item">
             <NuxtLink to="/my_page">マイページ</NuxtLink>
           </li>
@@ -55,6 +60,11 @@ export default {
     return{
       isShowSidebar: false,
       alertStockList:[],
+      user:{},
+      profile:{
+        name:"",
+        email:"",
+      }
     }
   },
   methods:{
@@ -88,7 +98,11 @@ export default {
       this.hideModal();
     }
   },
-  mounted(){
+
+  async mounted(){
+        
+    this.profile = await this.$profilesGet();
+
     /*------------------------- リスト外クリック 非アクティブ化 -------------------------*/
     document.addEventListener('click', (e) => {
       if(!e.target.closest(`.ly_navbar_sidebar`) && !e.target.closest(`.ly_navbar_user`)) {
@@ -170,6 +184,14 @@ $col_orange: #ff6a06 !default;
       padding: 20px;
     }
     &_sidebar{
+      img{
+        width: 80px; /*幅*/
+        height: auto; /*縦横比を維持する高さを自動計算*/
+      }
+
+      .box0{
+        text-align: center; /*中央寄せ*/
+      }
       position: absolute;
       right: 0px;
       top: 0px;

@@ -1,7 +1,10 @@
 
 <template>
  <div class="mypage_bl">
+    <Navbar/>
+
     <h1 class="mypage_bl_title mt_10 mb_10">Profile</h1>
+    
     <div class="mypage_bl_card mx_auto d_grid gap_15">
         <label class="d_grid" >
             メールアドレス
@@ -9,13 +12,50 @@
         </label>
         <label class="d_grid" >
             名前
-            <input class="el_input" type="text" v-model="user.displayName" >
+            <input class="el_input" type="text" v-model="profile.name" >
         </label>
 
-        <button type="button">保存</button>
+        <button type="button" v-on:click="update">保存</button>
     </div>
 </div>
+
 </template>
+
+<script>
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+
+export default {
+    // コンポーネント呼び出し
+    components: {
+        Navbar: () => import('~/layouts/navbar')
+    },
+
+    data(){
+        return{
+            user:{
+               email:"" 
+            },
+            profile:{
+                name:"",
+                userId:"",
+            }
+        }
+    },
+    methods:{
+        update(){
+            this.$updateAuthUser(this.user);
+            this.$profilesUpdate(this.profile);
+            this.$store.dispatch('flashMessage/showFlashMessage', '更新が完了しました。');
+        },
+
+    },
+    async mounted(){
+        this.user    = await this.$getAuthUser();
+        this.profile = await this.$profilesGet();
+
+    }
+}
+</script>
 
 
 <style lang="scss">
@@ -39,23 +79,3 @@
 
 
 </style>
-
-<script>
-import { getAuth, onAuthStateChanged } from "firebase/auth";
-
-export default {
-    data(){
-        return{
-            user:{},
-        }
-    },
-    methods:{
-        updateAuthUser(){
-            this.$updateAuthUser(this.user);
-        }
-    },
-    async mounted(){
-        this.user = await this.$getAuthUser();
-    }
-}
-</script>
