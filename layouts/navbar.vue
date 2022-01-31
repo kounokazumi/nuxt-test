@@ -55,16 +55,14 @@
 </template>
 
 <script>
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+
 export default {
   data(){
     return{
       isShowSidebar: false,
       alertStockList:[],
       user:{},
-      profile:{
-        name:"",
-        email:"",
-      }
     }
   },
   methods:{
@@ -101,13 +99,18 @@ export default {
 
   async mounted(){
         
-    this.profile = await this.$profilesGet();
+    // this.profile = await this.$profilesGet();
 
     /*------------------------- リスト外クリック 非アクティブ化 -------------------------*/
     document.addEventListener('click', (e) => {
       if(!e.target.closest(`.ly_navbar_sidebar`) && !e.target.closest(`.ly_navbar_user`)) {
         this.hiddenSidebar();
       }
+    });
+
+    // プロフィールの値を常に取得
+    onAuthStateChanged(getAuth(), (user) => {
+      this.$store.dispatch('profile/fetchProfile')
     });
 
     this.alertStock();
@@ -120,6 +123,9 @@ export default {
     isActiveFlashMessage(){
       return this.$store.state.flashMessage.status;
     },
+    profile(){
+      return this.$store.state.profile.profile;
+    }
   }
 }
 </script>
