@@ -111,7 +111,7 @@ export default{
     },
   },
   async mounted(){
-    this.getStockList();
+    // this.getStockList();
     this.getShoppingList();
     onAuthStateChanged(getAuth(), (user) => {
       this.$store.dispatch('stockList/fetchList')

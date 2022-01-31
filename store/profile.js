@@ -30,7 +30,6 @@ export const actions = {
     })
 
     onSnapshot(doc(db, "profiles", uid), (doc) => {
-      console.log(doc.data());
       commit('setProfile', doc.data())
     });
   }
