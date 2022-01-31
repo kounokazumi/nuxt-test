@@ -55,7 +55,6 @@ module.exports = {
     '@/plugins/shoppings',
     '@/plugins/stocks',
     '@/plugins/authUser',
-  ]
     '@/plugins/profiles',
   ],
   manifest: {
