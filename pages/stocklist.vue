@@ -36,6 +36,7 @@
 
 <script>
 require('date-utils')
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 export default{
   // コンポーネント呼び出し
@@ -45,7 +46,6 @@ export default{
 
   data(){
     return {
-      stockList:[],
       shoppingList:[],
       checkItems:[],
     }
@@ -105,10 +105,17 @@ export default{
       return toDay.getDaysBetween(periodDay);
     },
   },
+  computed:{
+    stockList() {
+      return this.$store.state.stockList.list
+    },
+  },
   async mounted(){
     this.getStockList();
     this.getShoppingList();
-
+    onAuthStateChanged(getAuth(), (user) => {
+      this.$store.dispatch('stockList/fetchList')
+    });
     // let config = await this.$alertStocks();
     // this.$axios.$post('/message/push', config.params, {headers:config.headers})
     // console.log(config);
