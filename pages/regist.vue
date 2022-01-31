@@ -2,6 +2,7 @@
   <div>
     <h2 class="fs_30 tx_center">新規会員登録</h2>
     <form class="mt_100 d_grid gap_30" action="">
+      <p v-if="errorMessage">{{ errorMessage }}</p>
       <input class="el_input" v-model="name" type="text" placeholder="名前" autocomplete="username">
       <input class="el_input" v-model="email" type="email" placeholder="メールアドレス" autocomplete="email">
       <input class="el_input" v-model="password" type="password" placeholder="パスワード" autocomplete="new-password">
@@ -19,6 +20,7 @@ export default {
       email:'',
       password:'',
       userid:'',
+      errorMessage:'',
     }
   },
   methods:{
@@ -39,6 +41,7 @@ export default {
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
+          this.errorMessage = error.message;
           console.log(errorCode,errorMessage);
         });
         
