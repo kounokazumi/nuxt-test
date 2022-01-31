@@ -47,6 +47,7 @@ const updateProfile = async(profile) => {
     return error.message;
   }
 
+
 }
 
 export default({}, inject) => {
